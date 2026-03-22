@@ -257,7 +257,18 @@ export default function App() {
               </div>
 
               {/* Data Display */}
-              <div className="space-y-4">
+              <div className="space-y-4 min-h-[400px]">
+                {loading && data.length === 0 && (
+                  <div className="h-64 flex flex-col items-center justify-center">
+                    <motion.div 
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      className="w-12 h-12 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full mb-4"
+                    />
+                    <p className="text-zinc-500 animate-pulse">Consultando API...</p>
+                  </div>
+                )}
+
                 {data.length === 0 && !loading && (
                   <div className="h-64 flex flex-col items-center justify-center border-2 border-dashed border-white/5 rounded-2xl text-zinc-600">
                     <Activity size={48} className="mb-4 opacity-20" />
