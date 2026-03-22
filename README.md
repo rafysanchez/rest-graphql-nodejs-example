@@ -119,4 +119,20 @@ query GetUsersWithOrders {
 
 ---
 
+## 🐳 Docker Setup
+
+Para rodar a aplicação usando Docker:
+
+1.  **Construa e inicie os containers:**
+    ```bash
+    docker-compose up --build
+    ```
+
+2.  **Acesse a aplicação:**
+    Abra [http://localhost:3000](http://localhost:3000).
+
+A base de dados SQLite será persistida no volume `app-data` definido no `docker-compose.yml`.
+
+---
+
 Desenvolvido para fins educacionais sobre arquitetura de sistemas distribuídos.

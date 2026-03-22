@@ -1,0 +1,9 @@
+node_modules
+dist
+prisma/*.db
+prisma/*.db-journal
+.env
+.git
+README.md
+Dockerfile
+docker-compose.yml
