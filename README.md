@@ -1,7 +1,7 @@
 # REST vs GraphQL: Architectural Comparison Demo
 
 Este projeto é uma demonstração prática e interativa das diferenças arquiteturais, de performance e de experiência de desenvolvimento entre **REST API** e **GraphQL**. O objetivo é ilustrar conceitos como o problema do N+1, Round-trips de rede e Over-fetching.
-
+    
 ## 🚀 Tecnologias Utilizadas
 
 - **Backend:** Node.js com [Fastify](https://www.fastify.io/) (Alta performance).
