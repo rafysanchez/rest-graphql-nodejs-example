@@ -1,0 +1,5 @@
+{
+  "name": "Clean Architecture Backend (REST + GraphQL)",
+  "description": "A professional Node.js backend using Clean Architecture, SOLID, Fastify, Prisma, REST and GraphQL with N+1 resolution using DataLoaders.",
+  "requestFramePermissions": []
+}
