@@ -135,4 +135,34 @@ The SQLite database will be persisted in the `app-data` volume defined in `docke
 
 ---
 
+## GitHub Actions to Docker Hub
+
+The repository now includes a workflow at `.github/workflows/dockerhub.yml`.
+
+It does the following:
+
+```text
+- Pull request to main/master: builds the Docker image to validate the Dockerfile, but does not push.
+- Push to main/master: builds the image and pushes it to Docker Hub.
+- Git tag starting with v: builds the image and pushes it to Docker Hub.
+- Manual trigger: can be started from the GitHub Actions tab.
+```
+
+Configure these repository secrets before running the workflow:
+
+```text
+DOCKERHUB_USERNAME
+DOCKERHUB_TOKEN
+```
+
+Optional repository variable:
+
+```text
+DOCKERHUB_REPOSITORY
+```
+
+If `DOCKERHUB_REPOSITORY` is not defined, the workflow uses the GitHub repository name as the Docker Hub repository name.
+
+---
+
 Developed for educational purposes on distributed systems architecture.
