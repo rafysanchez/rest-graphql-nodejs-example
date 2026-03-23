@@ -151,9 +151,12 @@ It does the following:
 Configure these repository secrets before running the workflow:
 
 ```text
-DOCKERHUB_USERNAME
+DOCKER_USERNAME
 DOCKERHUB_TOKEN
+DOCKER_PASSWORD
 ```
+
+`DOCKERHUB_TOKEN` is preferred. `DOCKER_PASSWORD` is accepted as a fallback when no token is configured.
 
 Optional repository variable:
 
@@ -166,3 +169,5 @@ If `DOCKERHUB_REPOSITORY` is not defined, the workflow uses the GitHub repositor
 ---
 
 Developed for educational purposes on distributed systems architecture.
+
+

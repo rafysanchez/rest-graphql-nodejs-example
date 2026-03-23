@@ -32,7 +32,7 @@ jobs:
         shell: bash
         run: |
           repository_name="${{ vars.DOCKERHUB_REPOSITORY }}"
-          dockerhub_username="${{ secrets.DOCKERHUB_USERNAME }}"
+          dockerhub_username="${{ secrets.DOCKER_USERNAME }}"
 
           if [ -z "$repository_name" ]; then
             repository_name="${GITHUB_REPOSITORY##*/}"
@@ -50,8 +50,11 @@ jobs:
         if: github.event_name != 'pull_request'
         shell: bash
         run: |
-          test -n "${{ secrets.DOCKERHUB_USERNAME }}" || { echo "Missing secret: DOCKERHUB_USERNAME"; exit 1; }
-          test -n "${{ secrets.DOCKERHUB_TOKEN }}" || { echo "Missing secret: DOCKERHUB_TOKEN"; exit 1; }
+          test -n "${{ secrets.DOCKER_USERNAME }}" || { echo "Missing secret: DOCKER_USERNAME"; exit 1; }
+          if [ -z "${{ secrets.DOCKERHUB_TOKEN }}" ] && [ -z "${{ secrets.DOCKER_PASSWORD }}" ]; then
+            echo "Missing secret: DOCKERHUB_TOKEN or DOCKER_PASSWORD"
+            exit 1
+          fi
 
       - name: Extract Docker metadata
         id: meta
@@ -68,8 +71,8 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN || secrets.DOCKER_PASSWORD }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
